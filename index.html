@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link rel="stylesheet" href="screen.css">
-  <title></title>
+  <title>What Should I Do?</title>
 </head>
 
 <body>
@@ -16,12 +16,10 @@
 
   <template id="homepage">
   <div class="container">
-    <nav class="account text-right">
-      <a href="#" class="btn btn-sm btn-primary">Login</a>
-      <a href="#" class="btn btn-sm btn-primary">Sign Up</a>
-    </nav>
     <div class="homediv col-9">
-      <img id="homeLogo" class="img-fluid rounded mx-auto d-block" src="wsid.png">
+      <a href="#" onclick="history.go(-1)">
+        <img id="homeLogo" class="img-fluid rounded mx-auto d-block" src="wsid.png">
+      </a>
       <div class="search">
         <span class="fa fa-search"></span>
         <input v-on:keyup.enter="searching" class="siteSearch form-control" type="text" placeholder="Search . . .">
@@ -32,26 +30,28 @@
 
   <template id="search">
     <div class="container">
-      <nav class="account text-right">
-        <img id="smallLogo" src="wsid-sm.png">
-        <a href="#" class="btn btn-sm btn-primary">Login</a>
-        <a href="#" class="btn btn-sm btn-primary">Sign Up</a>
-      </nav>
-      <form id="main" v-cloak>
+      <form id="a" v-cloak>
         <div class="bar">
+          <a href="#" onclick="history.go(-1)">
+            <img id="smallLogo" src="wsid-sm.png">
+          </a>
           <input v-model="searchString" class="siteSearch form-control" type="text" placeholder="Search . . .">
         </div>
         <ul>
-          <li class="resultLayout" v-for="article in filteredArticles">
-            <a class="resultImg" v-bind:href="article.url"><img v-bind:src="article.image" /></a>
-            <p class="rating" v-html="article.rating"></p>
-            <p class="dollarSign">{{article.dollar}}</p>
-            <p class="title">{{article.title}}</p>
+          <li class="resultLayout" v-for="a in filteredArticles">
+            <a class="resultImg" v-bind:href="a.url"><img v-bind:src="a.image" /></a>
+            <p class="rating" v-html="a.rating"></p>
+            <p class="dollarSign">{{a.dollar}}</p>
+            <p class="title">{{a.title}}</p>
           </li>
         </ul>
       </form>
     </div>
   </template>
+
+<template id="zoomedInfo">
+  <h1>Here is the screen if someone clicks on a result</h1>
+</template>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
