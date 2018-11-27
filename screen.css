@@ -28,12 +28,8 @@ ul li p {
   color: #6e7a7f;
 }
 
-#homeLogo {
+#homeLogo, #smallLogo {
   padding-bottom: 5%;
-}
-
-#smallLogo {
-  float: left;
 }
 
 .siteSearch {
@@ -69,7 +65,7 @@ ul li p {
   position: relative;
 }
 
-.account a {
+.account div {
   font-size: 18px;
   margin-left: 25px;
   color: #EEE;
