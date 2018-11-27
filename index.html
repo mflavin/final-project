@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="screen.css">
+  <title></title>
+</head>
+
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+
+  <template id="homepage">
+  <div class="container">
+    <nav class="account text-right">
+      <a href="#" class="btn btn-sm btn-primary">Login</a>
+      <a href="#" class="btn btn-sm btn-primary">Sign Up</a>
+    </nav>
+    <div class="homediv col-9">
+      <img id="homeLogo" class="img-fluid rounded mx-auto d-block" src="wsid.png">
+      <div class="search">
+        <span class="fa fa-search"></span>
+        <input v-on:keyup.enter="searching" class="siteSearch form-control" type="text" placeholder="Search . . .">
+      </div>
+    </div>
+  </div>
+  </template>
+
+  <template id="search">
+    <div class="container">
+      <nav class="account text-right">
+        <img id="smallLogo" src="wsid-sm.png">
+        <a href="#" class="btn btn-sm btn-primary">Login</a>
+        <a href="#" class="btn btn-sm btn-primary">Sign Up</a>
+      </nav>
+      <form id="main" v-cloak>
+        <div class="bar">
+          <input v-model="searchString" class="siteSearch form-control" type="text" placeholder="Search . . .">
+        </div>
+        <ul>
+          <li class="resultLayout" v-for="article in filteredArticles">
+            <a class="resultImg" v-bind:href="article.url"><img v-bind:src="article.image" /></a>
+            <p class="rating" v-html="article.rating"></p>
+            <p class="dollarSign">{{article.dollar}}</p>
+            <p class="title">{{article.title}}</p>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </template>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="site.js" charset="utf-8"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+  font: 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align: center;
+  background-color: #2a2a2e;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  padding: 20px;
+  overflow: hidden;
+}
+
+ul li p {
+  font-weight: bold;
+  padding-top: 12px;
+  color: #6e7a7f;
+}
+
+#homeLogo {
+  padding-bottom: 5%;
+}
+
+#smallLogo {
+  float: left;
+}
+
+.siteSearch {
+  background-color: #EEE;
+  border-radius: 30px;
+  text-indent: 32px;
+}
+
+.bar {
+  width: 60%;
+  margin: 35px auto;
+}
+
+.homediv {
+  margin: 0 auto;
+  margin-top: 20vh;
+}
+
+.search {
+  position: relative;
+}
+
+.fa-search {
+  color: black;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.account {
+  margin-top: 25px;
+  display: block;
+  position: relative;
+}
+
+.account a {
+  font-size: 18px;
+  margin-left: 25px;
+  color: #EEE;
+  background-color: #1072ba;
+}
+
+.resultLayout {
+  display: grid;
+  grid-template-areas:
+  'img rate price'
+  'img title title';
+}
+
+.resultImg,
+.resultImg img {
+  grid-area: img;
+  width: 30vw;
+  height: 25vh;
+  float: left;
+}
+
+.rating {
+  grid-area: rate;
+  color: #1072ba;
+}
+
+.title {
+  font-size: 26px;
+  word-wrap: break-word;
+  grid-area: title;
+}
+
+.dollarSign {
+  grid-area: price;
+}
+
+.rating,
+.title {
+  width: 35vw;
+}
