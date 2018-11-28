@@ -30,7 +30,6 @@
 
   <template id="search">
     <div class="container">
-      <form id="a" v-cloak>
         <div class="bar">
           <a href="#" onclick="history.go(-1)">
             <img id="smallLogo" src="wsid-sm.png">
@@ -38,19 +37,32 @@
           <input v-model="searchString" class="siteSearch form-control" type="text" placeholder="Search . . .">
         </div>
         <ul>
-          <li class="resultLayout" v-for="a in filteredArticles">
-            <a class="resultImg" v-bind:href="a.url"><img v-bind:src="a.image" /></a>
-            <p class="rating" v-html="a.rating"></p>
-            <p class="dollarSign">{{a.dollar}}</p>
-            <p class="title">{{a.title}}</p>
-          </li>
+            <li class="resultLayout" v-for="a in filteredArticles">
+              <router-link class="zooming" :to="{name:'zoomedInfo', params: {id: a.id, image: a.image, rating: a.rating, dollar: a.dollar, title: a.title}}">
+                <img class="resultImg" v-bind:src="a.image" />
+                <p class="rating" v-html="a.rating"></p>
+                <p class="dollarSign">{{a.dollar}}</p>
+                <p class="title">{{a.title}}</p>
+              </router-link>
+            </li>
         </ul>
-      </form>
     </div>
   </template>
 
 <template id="zoomedInfo">
-  <h1>Here is the screen if someone clicks on a result</h1>
+  <div class="container">
+      <div class="bar">
+        <a href="#" onclick="history.go(-1)">
+          <img id="smallLogo" src="wsid-sm.png">
+        </a>
+      </div>
+      <div>
+        <img v-bind:src="image" />
+        <p class="rating" v-html="rating"></p>
+        <p class="dollarSign">{{dollar}}</p>
+        <p class="title">{{title}}</p>
+      </div>
+    <div>
 </template>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
