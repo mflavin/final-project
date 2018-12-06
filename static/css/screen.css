@@ -1,0 +1,145 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+  font: 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align: center;
+  background-color: #2a2a2e;
+}
+
+ul {
+  list-style: none;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  border: 1px solid #ddd;
+  padding: 20px;
+  overflow: hidden;
+}
+
+ul li p {
+  font-weight: bold;
+  padding-top: 12px;
+  color: #6e7a7f;
+}
+
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#homeLogo, #smallLogo {
+  padding-bottom: 5%;
+}
+
+#sorter {
+  border-radius: 10px;
+  float: right;
+  margin-right: -35%;
+  width: 25%;
+}
+
+#profilePic{
+  margin-top: 10%;
+}
+
+.siteSearch {
+  background-color: #EEE;
+  border-radius: 30px;
+  text-indent: 32px;
+  padding: 10px;
+  float: left;
+  font-size: 17px;
+  margin-bottom: 10%;
+}
+.example button {
+  border-radius: 30px;
+  margin-left: -20%;
+  background-color: #1072ba;
+  position: absolute;
+}
+
+.bar {
+  width: 60%;
+  margin: 35px auto;
+}
+
+.homediv {
+  margin: 0 auto;
+  margin-top: 20vh;
+}
+
+.search {
+  position: relative;
+}
+
+.resultLayout {
+  height: 25vh;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+  'img rate price'
+  'img title title';
+  margin-top: 3%;
+}
+
+.resultLayout:hover {
+  background-color: #34343c;
+  box-shadow: -1px 0px 20px 2px black;
+}
+
+.resultImg,
+.resultImg img {
+  grid-area: img;
+  float: left;
+  width: 20vw;
+  height: 20vh;
+}
+
+.rating {
+  grid-area: rate;
+  color: #1072ba;
+}
+
+.title {
+  font-size: 26px;
+  grid-area: title;
+}
+
+.dollarSign {
+  grid-area: price;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  margin-top: 10%;
+}
+.form-signin input {
+  margin-bottom: 5%;
+}

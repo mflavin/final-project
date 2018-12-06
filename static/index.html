@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="static/css/screen.css">
+  <title>What Should I Do?</title>
+</head>
+
+<body>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+
+  <template id="homepage">
+    <div class="container">
+      <div class="homediv col-9">
+        <a href="#" onclick="history.go(-1)">
+          <img id="homeLogo" class="img-fluid rounded mx-auto d-block" src="static/images/wsid.png">
+        </a>
+        <div class="search">
+          <form class="example">
+            <input id="pac-input" v-on:keyup.enter="searching" class="siteSearch form-control" type="text" placeholder="Search . . .">
+            <button @click.prevent="searching" type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+      </div>
+  </template>
+
+  <template id="search">
+    <div class="container">
+      <div class="bar">
+        <a href="#" onclick="history.go(-1)">
+          <img id="smallLogo" src="static/images/wsid-sm.png">
+        </a>
+        <input id="filter" v-model="searchString" class="siteSearch form-control" type="text" placeholder="Search . . .">
+
+        <select id="sorter">
+          <option @click="sortName" value="name">Alphabetical</option>
+          <option @click="sortRating" value="rating">Rating</option>
+        </select>
+
+      </div>
+
+      <ul v-if="filteredList.length">
+        <li v-on:click="handleClick($event,rs)" class="resultLayout" v-for="rs in filteredList">
+          <p class="title" v-html="rs.name"></p>
+          <p class="dollarSign">$ {{rs.price}}</p>
+          <p class="rating" v-html="rs.rating"></p>
+          <img class="resultImg" v-bind:src="rs.photos"></img>
+        </li>
+      </ul>
+      <h1 v-else>No Results Found!</h1>
+
+    </div>
+  </template>
+
+  <template id="zoomedInfo">
+    <div class="container">
+      <div class="bar">
+        <a href="#" onclick="history.go(-1)">
+          <img id="smallLogo" src="static/images/wsid-sm.png">
+        </a>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row content">
+          <div class="col-sm-3 sidenav">
+            <ul>
+              <li>Address: {{model.vicinity}}</li>
+              <li>Price: {{model.rating}}</li>
+              <li>Types: {{model.types}}</li>
+            </ul>
+          </div>
+
+          <div class="col-sm-9">
+            <h1>{{model.name}}</h1>
+            <p>Category:</p>
+            <img class="resultImg" v-bind:src="model.icon"></img>
+          </div>
+        </div>
+      </div>
+
+      <div>
+  </template>
+
+  <template id="login">
+    <form class="form-signin" action="/login" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <a href="#" class="btn" @click="needAccount">Need an account?</a>
+    </form>
+  </template>
+
+  <template id="signup">
+    <form class="form-signin" action="/signup" method="POST">
+      <h1 class="h3 mb-3 font-weight-normal">Please make an account</h1>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+  </template>
+
+  <template id="account">
+    <div class="container">
+      <h1 class="text-center">Update Account</h1>
+      <div class="row" id="profilePic">
+        <div class="col-sm-3">
+          <div class="text-center">
+            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+          </div>
+        </div>
+        <div class="col-sm-8">
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <form class="form" action="/account" method="POST">
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="email">
+                      <h4>Email</h4>
+                    </label>
+                    <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email address">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <label for="Password">
+                      <h4>Password</h4>
+                    </label>
+                    <input type="Password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-12">
+                    <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvq6V0s6zHntRhoK_RxzVai6bZCR3tZck&libraries=places&callback=initMap" async defer></script>
+  <script src="static/js/site.js" charset="utf-8"></script>
+</body>
+
+</html>
